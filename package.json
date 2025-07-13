@@ -1,0 +1,9 @@
+{
+  "name": "server-node",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server.cjs"
+  }
+}
