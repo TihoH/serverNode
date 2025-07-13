@@ -5,5 +5,8 @@
   "main": "server.cjs",
   "scripts": {
     "start": "node server.cjs"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0"
   }
 }
