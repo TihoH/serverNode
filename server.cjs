@@ -1,7 +1,9 @@
+require('dotenv').config();
+
+const PORT = process.env.PORT || 3700;
 const fs = require("fs");
 const path = require("path");
 const http = require("http");
-const PORT = 3700;
 
 http
   .createServer((req, res) => {
