@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3700;
 const fs = require("fs");
@@ -24,7 +24,7 @@ http
       });
     }
     if (req.url === "/api/newUser" && req.method === "POST") {
-        console.log(req.url)
+      console.log(req.url);
       let body = "";
       req.on("data", (chunk) => {
         body += chunk;
@@ -32,7 +32,6 @@ http
 
       req.on("end", () => {
         const fileData = path.join(__dirname, "data.json");
-
 
         let newUser;
 
@@ -53,12 +52,13 @@ http
           try {
             users = JSON.parse(data);
           } catch (error) {
-            // res.writeHead(400, { "Content-Type": "application/json" });
-            // res.end(JSON.stringify({ error: "Некорректный JSON" }));
-            // return;
             users = [];
           }
-          users.push({...newUser ,  id: 124435252523 });
+
+          const maxId =
+            users.length > 0 ? Math.max(...users.map((u) => u.id || 0)) : 0;
+          const newId = maxId + 1;
+          users.push({ ...newUser, id: newId });
 
           fs.writeFile(fileData, JSON.stringify(users, null, 2), (err) => {
             if (err) {
@@ -68,7 +68,7 @@ http
             }
             res.writeHead(200, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ message: "Пользователь добавлен" }));
-            return
+            return;
           });
           return;
         });
