@@ -38,6 +38,7 @@ http
     if (req.url === "/api/newUser" && req.method === "POST") {
 
       newUser(res , req)
+      return
     }
   })
   .listen(PORT);
