@@ -27,13 +27,16 @@ http
       console.log(req.url);
       let body = "";
       req.on("data", (chunk) => {
+        console.log("Получен POST запрос /api/newUser");
         body += chunk;
       });
 
       req.on("end", () => {
         const fileData = path.join(__dirname, "data.json");
-
+        
         let newUser;
+
+        console.log(body)
 
         try {
           newUser = JSON.parse(body);
