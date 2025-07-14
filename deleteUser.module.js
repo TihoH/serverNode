@@ -29,7 +29,7 @@ function deleteUser(req, res) {
         return;
       }
        res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ message: `Пользователь с id ${idToDelete} удалён` }));
+      res.end(JSON.stringify({ message: `Пользователь с id ${idDeleteItem} удалён` }));
     });
   });
 }
