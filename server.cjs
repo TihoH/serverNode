@@ -40,9 +40,9 @@ http
       newUser( req ,res)
       return
     }
-    if(req.url === '/api/deleteUser' && req.method === 'DELETE'){
-      deleteUser(req , res)
-      return
-    }
+if (req.url?.startsWith('/api/deleteUser/') && req.method === 'DELETE') {
+  deleteUser(req, res);
+  return;
+}
   })
   .listen(PORT);
