@@ -37,7 +37,7 @@ http
     }
     if (req.url === "/api/newUser" && req.method === "POST") {
 
-      newUser(res , req)
+      newUser( req ,res)
       return
     }
   })
