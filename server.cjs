@@ -8,6 +8,17 @@ const http = require("http");
 http
   .createServer((req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
+
+     if (req.method === "OPTIONS") {
+      res.writeHead(204, {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      });
+      res.end();
+      return;
+    }
+
     if (req.url === "/api/getData" && req.method === "GET") {
       fs.readFile(path.join(__dirname, "/data.json"), (err, data) => {
         if (err) {
