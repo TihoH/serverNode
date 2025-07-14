@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const http = require("http");
 const { newUser } = require("./newUser.module");
+const { deleteUser } = require("./deleteUser.module");
 
 http
   .createServer((req, res) => {
@@ -36,8 +37,11 @@ http
       });
     }
     if (req.url === "/api/newUser" && req.method === "POST") {
-
       newUser( req ,res)
+      return
+    }
+    if(req.url === '/api/deleteUser' && req.method === 'DELETE'){
+      deleteUser(req , res)
       return
     }
   })
