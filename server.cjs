@@ -58,7 +58,7 @@ http
             // return;
             users = [];
           }
-          users.push(newUser);
+          users.push({...newUser ,  id: 124435252523 });
 
           fs.writeFile(fileData, JSON.stringify(users, null, 2), (err) => {
             if (err) {
